@@ -1,0 +1,129 @@
+body {
+  background: linear-gradient(to right, #3392ff, #800080);
+  margin: 0;
+}
+
+header {
+  display: flex;
+  background-color: white;
+}
+
+h1{
+  text-align: center;
+  justify-content: center;
+  color: purple;
+  font-family: cursive;
+  margin-top: 60px;
+}
+
+nav {
+  background-color: white;
+  height: auto;
+  padding: 10px 0;
+}
+
+nav ul {
+  list-style: none;
+  text-align: center;
+}
+
+nav ul li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+nav ul li a {
+  color: purple;
+  text-decoration: none;
+  padding: 10px 15px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav ul li a:hover {
+  background-color: blue;
+  color: white; 
+  cursor: pointer;
+}
+
+
+.hero {
+  background-image: url('image/source.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 150px;
+  display: flex;
+  border-radius: 2%;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: left;
+}
+
+.hero-content {
+  max-width: 600px;
+  padding: 20px;
+}
+
+.hero-content h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  animation: fadeIn 1s ease;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.container {
+  display: flex;
+  height: 320px;
+  width: 100%;
+}
+
+main h2 {
+  margin-left: 90px;
+}
+
+main p {
+  margin-left: 10px;
+  font-style: italic;
+  font-weight: 400;
+}
+
+main a:hover{
+  color: #f39c12;
+}
+
+.first{
+  height: 320px;
+  width: 33%;
+  justify-content: center;
+  align-items: center;
+}
+
+.second {
+  height: 320px;
+  width: 33%;
+}
+
+
+.third {
+  height: 320px;
+  width: 33%;
+}
+
+
+.foot{
+  display: flex;
+}
+
+.right{
+  font-size: 15px;
+  margin-left: 1050px;
+  margin-top: 20px;
+}
+
+footer{
+  background-color: white;
+}

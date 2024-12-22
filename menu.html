@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Menu - LoluTeefah Cookhouse</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="menu.css">
+</head>
+<body>
+  <header>
+    <img src="logo.png" width="200px" height="130px" alt="LoluTeefah Logo">
+    <h1>LOLUTEEFAH COOKHOUSE</h1>
+  </header>
+  
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="book.html">Book</a></li>
+      <li><a href="aboutus.html">About Us</a></li>
+    </ul> 
+  </nav>
+
+  <main>
+    <section class="menu-section">
+      <center><h2> Menu List</h2></center>
+      <ul class="menu-list">
+        <li class="menu-item"> 
+          <img src="image/noodles.jpg" alt="noodles">
+          <p><strong>Noodles</strong> - $10</p>
+          <button onclick="addToCart('Noodles', 10)">Add to Cart</button>
+        </li>
+        <li class="menu-item">
+          <img src="image/friedrice.jpg" alt="Fried Rice">
+          <p><strong>Fried Rice</strong> - $12</p>
+          <button onclick="addToCart('Fried Rice', 12)">Add to Cart</button>
+        </li>
+        <li class="menu-item">
+          <img src="image/amala.jpg" alt="Amala">
+          <p><strong>Amala & Ewedu</strong> - $8</p>
+          <button onclick="addToCart('Amala & Ewedu', 8)">Add to Cart</button>
+        </li>
+        <li class="menu-item">
+          <img src="image/poundedyam.jpg" alt="Pounded Yam">
+          <p><strong>Pounded Yam</strong> - $11</p>
+          <button onclick="addToCart('Pounded Yam', 11)">Add to Cart</button>
+        </li>
+        <li class="menu-item">
+          <img src="image/plantain.jpg" alt="Plantain">
+          <p><strong>Plantain</strong> - $7</p>
+          <button onclick="addToCart('Plantain', 7)">Add to Cart</button>
+        </li>
+        <li class="menu-item">
+          <img src="image/asaro with plantain.jpg" alt="Asaro">
+          <p><strong>Asaro</strong> - $5</p>
+          <button onclick="addToCart('Asaro', 5)">Add to Cart</button>
+        </li>
+        <li class="menu-item">
+          <img src="image/ewa agoyin with.jpg" alt="Ewa Agonyin">
+          <p><strong>Ewa Agonyin</strong> - $9</p>
+          <button onclick="addToCart('Ewa Agonyin', 9)">Add to Cart</button>
+        </li>
+        <li class="menu-item">
+          <img src="image/eba and egusi.jpg" alt="Eba and Egusi">
+          <p><strong>Eba with Egusi soup</strong> - $10</p>
+          <button onclick="addToCart('Eba with Egusi soup', 10)">Add to Cart</button>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <div class="cart" id="cart">
+    <h3>Your Order</h3>
+    <ul id="cartItems"></ul>
+    <p>Total: $<span id="cartTotal">0</span></p>
+    <button onclick="checkout()">Checkout</button>
+  </div>
+
+  <footer>
+    <div class="foot">
+      <div class="logo">
+        <img src="IMG_5554.png" width="auto" height="50px" alt="Footer Logo">
+      </div>
+      <div class="right">
+        Copyright 2024
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    const cart = [];
+
+    function addToCart(itemName, itemPrice) {
+      cart.push({ name: itemName, price: itemPrice });
+      renderCart();
+    }
+
+    function renderCart() {
+      const cartItems = document.getElementById('cartItems');
+      const cartTotal = document.getElementById('cartTotal');
+
+      cartItems.innerHTML = '';
+      let total = 0;
+
+      cart.forEach(item => {
+        total += item.price;
+        const li = document.createElement('li');
+        li.textContent = `${item.name} - $${item.price}`;
+        cartItems.appendChild(li);
+      });
+
+      cartTotal.textContent = total.toFixed(2);
+    }
+
+
+    function checkout() {
+  if (cart.length === 0) {
+    alert('Your cart is empty!');
+    return;
+  }
+
+  const totalAmount = document.getElementById('cartTotal').textContent;
+  alert('Thank you for your order! Total: $' + totalAmount);
+
+  cart.length = 0; 
+  renderCart();
+
+  const paymentUrl = `payment.html?total=${encodeURIComponent(totalAmount)}`;
+  window.location.href = paymentUrl;
+}
+
+  </script>
+</body>
+</html>

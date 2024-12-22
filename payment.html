@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Payment - LoluTeefah Cookhouse</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="payment.css">
+
+</head>
+<body>
+  <div class="container">
+    <h1>Payment Details</h1>
+    <form id="paymentForm">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" placeholder="Enter your name" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="Enter your email" required>
+
+      <label for="amount">Total Amount (#)</label>
+      <input type="number" id="amount" placeholder="Total Amount" required>
+
+      <label for="cardNumber">Card Number</label>
+      <input type="tel" id="cardNumber" placeholder="1234 5678 9012 3456" required maxlength="19">
+
+      <label for="expiry">Expiry Date</label>
+      <input type="text" id="expiry" placeholder="MM/YY" required maxlength="5">
+
+      <label for="cvv">CVV</label>
+      <input type="number" id="cvv" placeholder="123" required maxlength="3">
+
+      <div id="errorMessage" class="error"></div>
+
+      <button type="submit" class="btn">Pay Now</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('paymentForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const cardNumber = document.getElementById('cardNumber').value.trim();
+      const expiry = document.getElementById('expiry').value.trim();
+      const cvv = document.getElementById('cvv').value.trim();
+      const errorMessage = document.getElementById('errorMessage');
+
+      // Clear previous error
+      errorMessage.textContent = '';
+
+      // Simple validation
+      if (!name || !email || !cardNumber || !expiry || !cvv) {
+        errorMessage.textContent = 'All fields are required!';
+        return;
+      }
+
+      if (cardNumber.length < 16 || cardNumber.length > 19) {
+        errorMessage.textContent = 'Card number must be 16-19 digits long.';
+        return;
+      }
+
+      if (!/^(0[1-9]|1[0-2])\/\d{2}$/.test(expiry)) {
+        errorMessage.textContent = 'Expiry date must be in MM/YY format.';
+        return;
+      }
+
+      if (cvv.length !== 3) {
+        errorMessage.textContent = 'CVV must be 3 digits long.';
+        return;
+      }
+
+      // Payment success simulation
+      alert('Payment successful! Thank you for your order.');
+      window.location.href = 'index.html'; // Redirect to the home page
+    });
+  </script>
+</body>
+</html>
